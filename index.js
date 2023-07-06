@@ -16,6 +16,10 @@ app.get("/", function(request, response)  {
     response.render("homePage");
 });
 
+
+
+
+
 app.post("/", function(req, res){
     console.log(req.query.email)
     res.json({message: "Вы зарегистрировались"})
