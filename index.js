@@ -27,7 +27,7 @@ app.post("/", function (req, res) {
         console.log("Получилось");
         console.log(result);
     }).catch((err) => {
-        console.log("Пошел нахуй")
+        console.log("Пшёл нахуй отсюдова")
         console.log(err)
     });
 });
