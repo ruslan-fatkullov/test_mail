@@ -34,21 +34,21 @@ app.post("/", function (req, res) {
 
 
 async function sendMail() {
-    let testEmailAccount = await nodemailer.createTestAccount();
+    //let testEmailAccount = await nodemailer.createTestAccount();
 
     let transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
+        host: 'smtp.mail.ru',
         port: 587,
         secure: false,
         auth: {
-            user: testEmailAccount.user,
-            pass: testEmailAccount.pass,
+            user: "fatkullov@inbox.ru",
+            pass: "6EQBszvmKfuMAFmLjt1n",
         },
     });
 
     let result = await transporter.sendMail({
-        from: `"Node js" <${testEmailAccount.user}>`,
-        to: 'fatkullov@inbox.ru',
+        from: `"Node js" <fatkullov@inbox.ru>`,
+        to: 'fatkullov1999@gmail.com',
         subject: 'Message from Node js',
         text: 'This message was sent from Node js server.',
         html:
