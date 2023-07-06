@@ -37,7 +37,7 @@ async function sendMail() {
     //let testEmailAccount = await nodemailer.createTestAccount();
 
     let transporter = nodemailer.createTransport({
-        host: 'smtp.mail.ru',
+        host: 'smtp.get-esvo-launcher.ru',
         port: 587,
         secure: false,
         auth: {
