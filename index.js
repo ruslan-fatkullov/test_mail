@@ -39,11 +39,11 @@ async function sendMail() {
     let transporter = nodemailer.createTransport({
         host: 'mail.get-esvo-launcher.ru',
         port: 587,
-        secure: false,
+        /*secure: false,
         auth: {
             user: "fatkullov1999",
             pass: "bhqayhjibalbqgxz",
-        },
+        },*/
     });
 
     let result = await transporter.sendMail({
