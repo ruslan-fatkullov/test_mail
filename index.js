@@ -41,13 +41,13 @@ async function sendMail() {
         port: 587,
         secure: false,
         auth: {
-            user: "fatkullov@inbox.ru",
+            user: "root@fatkullov@inbox.ru",
             pass: "kakady1999",
         },
     });
 
     let result = await transporter.sendMail({
-        from: `"Node js" <root@get-esvo-launcher.ru>`,
+        from: `"Node js" <root@fatkullov@inbox.ru>`,
         to: 'fatkullov1999@gmail.com',
         subject: 'Message from Node js',
         text: 'This message was sent from Node js server.',
