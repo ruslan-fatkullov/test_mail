@@ -22,32 +22,32 @@ app.get("/", function (request, response) {
 const nodemailer = require('nodemailer');
 
 app.post("/", function (req, res) {
-    console.log(req.query.email)
+    console.log("Отправка письма...")
+    sendMail().catch(console.error);
+});
 
-    const transporter = nodemailer.createTransport({
-        host: "smtp.forwardemail.net",
-        port: 465,
-        secure: true,
+
+async function sendMail() {
+    let testEmailAccount = await nodemailer.createTestAccount();
+
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.ethereal.email',
+        port: 587,
+        secure: false,
         auth: {
-            user: 'root@get-esvo-launcher.ru',
-            pass: 'dsfdsfdsfgh'
-        }
+            user: testEmailAccount.user,
+            pass: testEmailAccount.pass,
+        },
     });
 
-    async function main() {
-        const info = await transporter.sendMail({
-            from: '"Fred Foo 👻" <root@get-esvo-launcher.ru>', // sender address
-            to: req.query.email,
-            subject: "Hello ✔", // Subject line
-            text: "Hello world?", // plain text body
-            html: "<b>Hello world?</b>", // html body
-        });
+    let result = await transporter.sendMail({
+        from: '"Node js" <nodejs@example.com>',
+        to: 'fatkullov@inbox.ru',
+        subject: 'Message from Node js',
+        text: 'This message was sent from Node js server.',
+        html:
+            'This <i>message</i> was sent from <strong>Node js</strong> server.',
+    });
 
-        console.log("Message sent: %s", info.messageId);
-
-    }
-
-    main().catch(console.error);
-
-
-});
+    console.log(result);
+}
