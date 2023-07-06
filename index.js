@@ -38,7 +38,7 @@ async function sendMail() {
 
     let transporter = nodemailer.createTransport({
         host: 'mail.get-esvo-launcher.ru',
-        port: 587,
+        port: 2525,
         secure: false,
         auth: {
             user: "root@fatkullov@inbox.ru",
