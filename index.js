@@ -23,7 +23,13 @@ const nodemailer = require('nodemailer');
 
 app.post("/", function (req, res) {
     console.log("Отправка письма...")
-    sendMail().catch(console.error);
+    sendMail().then((result) => {
+        console.log("Получилось");
+        console.log(result);
+    }).catch((err) => {
+        console.log("Пошел нахуй")
+        console.log(err)
+    });
 });
 
 
@@ -41,13 +47,13 @@ async function sendMail() {
     });
 
     let result = await transporter.sendMail({
-        from: '"Node js" <nodejs@example.com>',
+        from: `"Node js" <${testEmailAccount.user}>`,
         to: 'fatkullov@inbox.ru',
         subject: 'Message from Node js',
         text: 'This message was sent from Node js server.',
         html:
             'This <i>message</i> was sent from <strong>Node js</strong> server.',
     });
+    return result
 
-    console.log(result);
 }
